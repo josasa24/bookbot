@@ -1,14 +1,10 @@
-def get_book_text(filepath):
-    with open(filepath, "r", encoding="utf-8") as f:
-        return f.read()
+# Import the functions
+from stats import get_book_text
+from stats import get_book_word_count
+from stats import get_lowercase_letter_counter
 
-def main(book_text):
-    print(book_text)
+# Define the texts
+frankenstein_txt = get_book_text("books/frankenstein.txt")
+# mobydick_txt = get_book_text("books/mobydick.txt")
 
-# Call the functions
-book_text = get_book_text("books/frankenstein.txt")
-main(book_text)
-
-def number_of_words(filepath):
-    with open(filepath, "r", encoding="utf-8") as f:
-        return f.read()
+get_lowercase_letter_counter(frankenstein_txt)
