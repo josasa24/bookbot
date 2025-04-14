@@ -1,10 +1,24 @@
-# Import the functions
-from stats import get_book_text
-from stats import get_book_word_count
-from stats import get_lowercase_letter_counter
+import sys
+from stats import get_book_text, get_book_word_count, get_lowercase_letter_counter, dictionary_sort
 
-# Define the texts
-frankenstein_txt = get_book_text("books/frankenstein.txt")
-# mobydick_txt = get_book_text("books/mobydick.txt")
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
-get_lowercase_letter_counter(frankenstein_txt)
+    filepath = sys.argv[1]
+    book_text = get_book_text(filepath)
+    word_count = get_book_word_count(book_text)
+    lowercase_counter = get_lowercase_letter_counter(book_text)
+    sorted_chars = dictionary_sort(book_text)
+
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {filepath}...")
+    print("----------- Word Count ----------")
+    print(f"{word_count} words found in the document")
+    print("--------- Character Count -------")
+    for char_dict in sorted_chars:
+        print(f"{char_dict['char']}: {char_dict['count']}")
+    print("============= END ===============")
+
+main()
